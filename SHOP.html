@@ -1,0 +1,187 @@
+<html>
+<head>
+    <title>TrendyS Shoessite</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            padding-top: 56px;
+        }
+
+        .product {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .product-img {
+            max-width: 100%;
+            height: 200px; 
+            object-fit: cover; 
+        }
+
+        .product-info {
+            margin-top: 20px;
+        }
+
+        .product-info h5 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .product-info h6 {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+        .product-info h5 font {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product-info h5 font.discount {
+            color: #90EE90;
+            margin-right: 5px;
+        }
+
+        .product-info h6:last-child {
+            margin-bottom: 20px;
+        }
+        .btn-primary, .btn-warning {
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .btn-primary:hover, .btn-warning:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">TrendyS Shoessite</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="landing.html">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">LOGOUT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="product">
+                <img src="C:\BCA\shoes.jpg" class="product-img">
+                <div class="product-info">
+                    <h5>Shuzer68</h5>
+                    <h6>Elegant trendy cool comfortable jordan boots for men(white)</h6>
+                    <h6>★3.6</h6>
+                    <h5><font class="discount">↓60%</font><font>₹1350</font></h5>
+                    <h6>↝ 1 cr+ users trust buy now pay later</h6>
+                    <a href="payment.html">
+                        <button class="btn btn-primary addToCart" data-product="Shuzer68" data-price="1350">Add to Cart</button>
+                        <button class="btn btn-warning buy-now" data-product="Shuzer68" data-price="1350">Buy now</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="product">
+                <img src="C:\BCA\shoes1.png" class="product-img">
+                <div class="product-info">
+                    <h5>Canvas</h5>
+                    <h6>trending faitar shoes girls shoes casual and sport and shoes</h6>
+                    <h6>★4.9</h6>
+                    <h5><font class="discount">↓50%</font><font>₹451</font></h5>
+                    <h6>↝ 1 cr+ users trust buy now pay later</h6>
+                    <a href="payment.html">
+                        <button class="btn btn-primary addToCart" data-product="Canvas" data-price="451">Add to Cart</button>
+                        <button class="btn btn-warning buy-now" data-product="Canvas" data-price="451">Buy now</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="product">
+                <img src="C:\BCA\sneekers.jpg" class="product-img">
+                <div class="product-info">
+                    <h5>Sneakers</h5>
+                    <h6>Fashion shoes and sneakers(trending shoes new shoes)</h6>
+                    <h6>★4.1</h6>
+                    <h5><font class="discount">↓40%</font><font>₹1050</font></h5>
+                    <h6>↝ 1 cr+ users trust buy now pay later</h6>
+                    <a href="payment.html">
+                        <button class="btn btn-primary addToCart" data-product="Sneakers" data-price="1050">Add to Cart</button>
+                        <button class="btn btn-warning buy-now" data-product="Sneakers" data-price="1050">Buy now</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        var cartItems = [];
+
+        $('.addToCart').click(function() {
+            var productName = $(this).data('product');
+            var price = $(this).data('price');
+
+            cartItems.push({
+                product: productName,
+                price: price
+            });
+
+            updateCartDisplay();
+
+            updateCartTotal();
+        });
+
+        function updateCartDisplay() {
+            $('#cartList').empty();
+            $.each(cartItems, function(index, item) {
+                $('#cartList').append('<li>' + item.product + ' - $' + item.price + '</li>');
+            });
+        }
+
+        function updateCartTotal() {
+            var total = 0;
+            $.each(cartItems, function(index, item) {
+                total += item.price;
+            });
+            $('#cartTotal').text(total);
+        }
+    });
+</script>
+
+</body>
+</html>

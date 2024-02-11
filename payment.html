@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment System</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+    .payment-details {
+      display: none;
+    }
+    
+    /* Animation for buttons */
+    .btn-primary {
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <h2 class="text-center mb-4">Payment</h2>
+            <form id="paymentForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="text" class="form-control" id="cardNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiryDate">Expiry Date</label>
+                    <input type="text" class="form-control" id="expiryDate" placeholder="MM/YYYY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" class="form-control" id="cvv" required>
+                </div>
+               <a href="file:///C:/BCA/order.html"><button type="submit" class="btn btn-primary btn-block">Pay Now</button></a>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        var cartItems = [];
+
+        $('.addToCart').click(function() {
+            var productName = $(this).data('product');
+            var price = $(this).data('price');
+
+            cartItems.push({
+                product: productName,
+                price: price
+            });
+
+            updateCartDisplay();
+
+            updateCartTotal();
+        });
+
+        function updateCartDisplay() {
+            $('#cartList').empty();
+            $.each(cartItems, function(index, item) {
+                $('#cartList').append('<li>' + item.product + ' - $' + item.price + '</li>');
+            });
+        }
+
+        function updateCartTotal() {
+            var total = 0;
+            $.each(cartItems, function(index, item) {
+                total += item.price;
+            });
+            $('#cartTotal').text(total);
+        }
+
+        $('.buy-now').click(function() {
+            var productName = $(this).data('product');
+            var price = $(this).data('price');
+
+            $('#productName').val(productName);
+            $('#price').val(price);
+        });
+
+        $('#paymentForm').submit(function(event) {
+            event.preventDefault();
+
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var cardNumber = $('#cardNumber').val();
+            var expiryDate = $('#expiryDate').val();
+            var cvv = $('#cvv').val();
+
+            if (name.trim() === '' || email.trim() === '' || cardNumber.trim() === '' || expiryDate.trim() === '' || cvv.trim() === '') {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            alert('Payment successful! Thank you for your purchase.');
+        });
+    });
+</script>
+
+
+</body>
+</html>

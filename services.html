@@ -1,0 +1,108 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Page</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+    <script src="script.js"></script> 
+    <style>
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav ul li a.active {
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .service {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .location {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        #map-container {
+            margin-top: 20px;
+            width: 100%;
+            height: 400px; 
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h1>Our Services</h1>
+    <div class="service">
+        <h2>Web Development</h2>
+        <p>We offer custom web development solutions tailored to your needs.</p>
+    </div>
+    <div class="service">
+        <h2>Graphic Design</h2>
+        <p>Our skilled designers create visually appealing graphics for your brand.</p>
+    </div>
+    <div class="service">
+        <h2>Digital Marketing</h2>
+        <p>Boost your online presence with our comprehensive digital marketing strategies.</p>
+    </div>
+</div>
+
+<div class="location">
+    <h2>Our Location</h2>
+    <p>We are located at:</p>
+    <address>
+        123 Main Street<br>
+        City, State ZIP<br>
+        Country
+    </address>
+    <div id="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12938.208659606094!2d-74.00594139999999!3d40.7127768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259e8a0ce1a45%3A0xd1b0287b39a1d7e3!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1637083687068!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('nav ul li a').click(function(){
+            $('nav ul li a').removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+</script>
+
+</body>
+</html>
